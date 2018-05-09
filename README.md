@@ -7,6 +7,11 @@
 
 Traits for testing Drupal sites that have user content (versus unpopulated sites).
 
+[Behat](http://behat.org) is great for facilitating conversations between 
+business managers and developers. Those are useful conversations, but many 
+organizations simply can't/wont via Gherkin. When you are on the hook for 
+product quality and not conversations, this may be the testing approach for you. 
+
 ## Installation
 
     composer require 'weitzman/drupal-test-traits'
