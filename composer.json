@@ -1,0 +1,20 @@
+{
+    "name": "weitzman/drupal-test-traits",
+    "description": "Traits for testing Drupal sites that have user content (versus unpopulated sites).",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Moshe Weitzman",
+            "email": "weitzman@tejasa.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "phpunit/phpunit": "~5.7",
+        "behat/mink": "^1.7",
+        "behat/mink-goutte-driver": "^1.2"
+    },
+    "autoload": {
+        "psr-4": { "weitzman\\DrupalTestTraits\\": "src" }
+    }
+}
