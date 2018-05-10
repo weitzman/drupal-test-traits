@@ -12,7 +12,8 @@
         "php": ">=7.0.0",
         "phpunit/phpunit": "~5.7",
         "behat/mink": "^1.7",
-        "behat/mink-goutte-driver": "^1.2"
+        "behat/mink-goutte-driver": "^1.2",
+        "drupal/core": "^8",
     },
     "autoload": {
         "psr-4": { "weitzman\\DrupalTestTraits\\": "src" }
