@@ -19,7 +19,7 @@ product quality and not conversations, this is a testing approach for you.
 
 ## Usage
 
-See [ExampleTestCase.php](./ExampleTestCase.php)
+See [ExampleTest.php](./ExampleTest.php)
 
 Add a `use` statement for the desired trait to your PHPUnit test class. Since our
 traits have a @before annotation, Drupal and Mink are automatically setup. 

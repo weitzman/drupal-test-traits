@@ -11,7 +11,7 @@ use weitzman\DrupalTestTraits\MinkSetup;
 /**
  * A model test class using 2 traits from Drupal Test Traits.
  */
-class ExampleTestCase extends TestCase {
+class ExampleTest extends TestCase {
 
   /**
    * Make Mink and Drupal available to this class.
