@@ -2,14 +2,17 @@ version: 2
 
 jobs:
   build:
+    working_directory: /var/www/code
     docker:
-      - image: massgov/drupal-container:1.0.5-ci
-    working_directory: ~/dtt
-    environment:
-      - DTT_BASE_URL=http://localhost
-      - APACHE_DOCROOT=~/dtt/web
+      # @see https://github.com/massgov/Drupal-Container
+      - image: massgov/drupal-container:1.0.2-ci
+        environment:
+          COMPOSER_ALLOW_SUPERUSER: 1
+          DTT_BASE_URL: http://dtt.local
+          APACHE_DOCROOT: /var/www/code/web
     steps:
       - checkout
+      - run: echo 'export PATH=/var/www/code/vendor/bin:$PATH' >> $BASH_ENV
       - restore_cache: # special step to restore the dependency cache if `composer.lock` does not change
           keys:
             - composer-v1-{{ checksum "composer.lock" }}
@@ -20,5 +23,6 @@ jobs:
           paths:
             - vendor
             - web
-      - run: vendor/bin/drush si -yv --db-url=sqlite://sites/default/files/.ht.sqlite standard
-      - run: vendor/bin/phpunit ./ExampleTestCase.php
+      - run: {name: 'Start Apache', command: '/usr/local/bin/apache2-foreground-enhanced', background: true}
+      - run: drush si -yv --db-url=sqlite://sites/default/files/.ht.sqlite standard
+      - run: phpunit ./ExampleTestCase.php

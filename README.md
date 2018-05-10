@@ -25,11 +25,10 @@ traits have a @before annotation, Drupal and Mink are automatically setup.
 
 ## Running Tests
 
-- You must specify the URL for your site as an environment variable. One way to do that:
+You must specify the URL for your site as an environment variable like so: DTT_BASE_URL=http://example.com. Here are several ways to do that:
 
-```
-DTT_BASE_URL=http://127.0.0.1:8888 vendor/bin/phpunit
-```
+- Enter that line into a .env file. These files are supported by [drupal-project](https://github.com/drupal-composer/drupal-project/blob/8.x/.env.example) and [Docker](https://docs.docker.com/compose/env-file/). 
+- Specify it at runtime: `DTT_BASE_URL=http://127.0.0.1:8888 vendor/bin/phpunit`
 
 ## Available traits
 
