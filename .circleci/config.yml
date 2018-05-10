@@ -20,5 +20,5 @@ jobs:
           paths:
             - vendor
             - web
-      - run: drush si -yv --db-url=sqlite://sites/default/files/.ht.sqlite standard
-      - run: phpunit ./ExampleTestCase.php
+      - run: vendor/bin/drush si -yv --db-url=sqlite://sites/default/files/.ht.sqlite standard
+      - run: vendor/bin/phpunit ./ExampleTestCase.php
