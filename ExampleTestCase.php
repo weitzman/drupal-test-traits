@@ -3,7 +3,7 @@
 namespace Drupal\Tests\mass_media\ExistingSite;
 
 use Drupal\file\Entity\File;
-use Drupal\media_entity\Entity\Media;
+use Drupal\node\Entity\Node;
 use PHPUnit\Framework\TestCase;
 use weitzman\DrupalTestTraits\DrupalSetup;
 use weitzman\DrupalTestTraits\MinkSetup;
@@ -34,7 +34,7 @@ class ExampleTestCase extends TestCase {
 
     // Create a "Llama" article.
 
-    $node = \Drupal\node\Entity\Node::create([
+    $node = Node::create([
       'title' => 'Llama',
       'type' => 'article',
       'field_image' => [

@@ -13,16 +13,7 @@ jobs:
     steps:
       - checkout
       - run: echo 'export PATH=/var/www/code/vendor/bin:$PATH' >> $BASH_ENV
-      - restore_cache: # special step to restore the dependency cache if `composer.lock` does not change
-          keys:
-            - composer-v1-{{ checksum "composer.lock" }}
-            - composer-v1-
       - run: composer install -n --prefer-dist
-      - save_cache: # special step to save the dependency cache with the `composer.lock` cache key template
-          key: composer-v1-{{ checksum "composer.lock" }}
-          paths:
-            - vendor
-            - web
       - run: {name: 'Start Apache', command: '/usr/local/bin/apache2-foreground-enhanced', background: true}
       - run: drush si -yv --db-url=sqlite://sites/default/files/.ht.sqlite standard
       - run: phpunit ./ExampleTestCase.php
