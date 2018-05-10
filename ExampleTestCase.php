@@ -36,16 +36,16 @@ class ExampleTestCase extends TestCase {
     $src = 'core/tests/Drupal/Tests/Component/FileCache/Fixtures/llama-23.txt';
     file_unmanaged_copy($src, $destination, TRUE);
 
-    // Create a "Llama" media item.
-    $media = Media::create([
+    // Create a "Llama" article.
+    $node = \Drupal\node\Entity\Node::create([
       'title' => 'Llama',
-      'bundle' => 'document',
+      'bundle' => 'article',
       'field_upload_file' => [
         'target_id' => $file->id(),
       ],
     ]);
-    $media->setPublished(TRUE)->save();
-    $this->markEntityForCleanup($media);
+    $node->setPublished(TRUE)->save();
+    $this->markEntityForCleanup($node);
 
     $this->visit($file->url());
     $this->assertEquals($this->getSession()->getStatusCode(), 200);

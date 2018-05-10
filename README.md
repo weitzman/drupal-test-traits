@@ -9,8 +9,8 @@ Traits for testing Drupal sites that have user content (versus unpopulated sites
 
 [Behat](http://behat.org) is great for facilitating conversations between 
 business managers and developers. Those are useful conversations, but many 
-organizations simply can't/wont via Gherkin. When you are on the hook for 
-product quality and not conversations, this may be the testing approach for you. 
+organizations simply can't/wont converse via Gherkin. When you are on the hook for 
+product quality and not conversations, this is a testing approach for you. 
 
 ## Installation
 
@@ -31,7 +31,6 @@ traits have a @before annotation, Drupal and Mink are automatically setup.
 
 - **MinkSetup** -- _Create a Mink session._  
   Makes Mink available for browser control, and offers a few helper methods.
-
 
 ## Colophon
 
