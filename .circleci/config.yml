@@ -16,4 +16,5 @@ jobs:
       - run: composer install -n --prefer-dist
       - run: {name: 'Start Apache', command: '/usr/local/bin/apache2-foreground-enhanced', background: true}
       - run: drush si -yv --db-url=sqlite://sites/default/files/.ht.sqlite standard
-      - run: phpunit ./ExampleTest.php
+      - run: phpunit --bootstrap=web/core/tests/bootstrap.php ./ExampleTest.php
+      - run: phpunit --bootstrap=web/core/tests/bootstrap.php ./tests
