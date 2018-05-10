@@ -9,6 +9,7 @@
         }
     ],
     "require": {
+        "webflo/drupal-finder":"^1.1",
         "php": ">=7.0.0",
         "phpunit/phpunit": "~5.7",
         "behat/mink": "^1.7",
