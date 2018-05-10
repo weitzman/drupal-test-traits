@@ -8,7 +8,7 @@ jobs:
       - image: massgov/drupal-container:1.0.2-ci
         environment:
           COMPOSER_ALLOW_SUPERUSER: 1
-          DTT_BASE_URL: http://dtt.local
+          DTT_BASE_URL: http://127.0.0.1
           APACHE_DOCROOT: /var/www/code/web
     steps:
       - checkout
