@@ -27,7 +27,7 @@ trait DrupalSetup
   {
     // Bootstrap Drupal so we can use Drupal's built in functions.
     $finder = new DrupalFinder();
-    $finder->locateRoot(__DIR__);
+    $finder->locateRoot(getcwd());
     $classLoader = include $finder->getVendorDir() . '/autoload.php';
     $base_url = getenv('DTT_BASE_URL');
     $parsed_url = parse_url($base_url);
