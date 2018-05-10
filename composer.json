@@ -16,6 +16,7 @@
         "webflo/drupal-finder": "^1.1"
     },
     "require-dev": {
+        "composer/installers": "^1.2",
         "drupal-composer/drupal-scaffold": "2.3.0",
         "drupal/core": "8.5.x-dev",
         "drush/drush": "^9"
@@ -29,5 +30,10 @@
             "url": "https://packages.drupal.org/8"
         }
     ],
+    "extra": {
+        "installer-paths": {
+            "web/core": ["type:drupal-core"]
+        }
+    }
 }
 
