@@ -4,10 +4,9 @@ jobs:
   build:
     docker:
       - image: massgov/drupal-container:1.0.5-ci
-    hostname: dtt.local
     working_directory: ~/dtt
     environment:
-      - DTT_BASE_URL=http://dtt.local
+      - DTT_BASE_URL=http://127.0.0.1
       - APACHE_DOCROOT=~/dtt/web
     steps:
       - checkout
