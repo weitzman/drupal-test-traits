@@ -6,11 +6,10 @@ jobs:
       - image: massgov/drupal-container:1.0.5-ci
     working_directory: ~/dtt
     environment:
-      - DTT_BASE_URL=http://127.0.0.1
+      - DTT_BASE_URL=http://localhost
       - APACHE_DOCROOT=~/dtt/web
     steps:
       - checkout
-      - run: composer self-update
       - restore_cache: # special step to restore the dependency cache if `composer.lock` does not change
           keys:
             - composer-v1-{{ checksum "composer.lock" }}
@@ -21,5 +20,5 @@ jobs:
           paths:
             - vendor
             - web
-      - run: vendor/bin/drush si -yv --db-url=sqlite://sites/default/files/.ht.sqlite standard
-      - run: vendor/bin/phpunit ./ExampleTestCase.php
+      - run: drush si -yv --db-url=sqlite://sites/default/files/.ht.sqlite standard
+      - run: phpunit ./ExampleTestCase.php
