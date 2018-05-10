@@ -9,11 +9,15 @@ jobs:
         environment:
           COMPOSER_ALLOW_SUPERUSER: 1
           DTT_BASE_URL: http://127.0.0.1
-          APACHE_DOCROOT: /var/www/code/web
+          APACHE_DOCROOT: /var/www/code/vendor/drupal/core
     steps:
       - checkout
       - run: echo 'export PATH=/var/www/code/vendor/bin:$PATH' >> $BASH_ENV
       - run: composer install -n --prefer-dist
       - run: {name: 'Start Apache', command: '/usr/local/bin/apache2-foreground-enhanced', background: true}
-      - run: drush si -yv --db-url=sqlite://sites/default/files/.ht.sqlite standard
-      - run: phpunit ./ExampleTest.php
+      - run:
+          command: drush si -yv --root=/var/www/code/vendor/drupal/core --db-url=sqlite://sites/default/files/.ht.sqlite standard
+          working_directory: /var/www/code/vendor/drupal/core
+      - run:
+          command: phpunit ./ExampleTest.php
+          working_directory: /var/www/code/vendor/drupal/core

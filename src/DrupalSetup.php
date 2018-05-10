@@ -17,7 +17,7 @@ trait DrupalSetup
   protected $cleanupEntities = [];
 
   /**
-   * Bootstrap Drupal.
+   * Bootstrap Drupal so we can use its API.
    *
    * Due to the annotation below, this method runs automatically when the trait is `use`d.
    *
