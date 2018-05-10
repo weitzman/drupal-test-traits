@@ -1,5 +1,6 @@
 # Drupal Test Traits
 
+[![CircleCI](https://circleci.com/gh/weitzman/drupal-test-traits.svg?style=svg)](https://circleci.com/gh/weitzman/drupal-test-traits)
 [![project-stage-badge]][project-stage-page]
 [![license-badge]][mit]
 
