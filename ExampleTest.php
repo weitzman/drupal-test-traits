@@ -6,6 +6,7 @@ use Drupal\file\Entity\File;
 use Drupal\node\Entity\Node;
 use PHPUnit\Framework\TestCase;
 use weitzman\DrupalTestTraits\DrupalSetup;
+use weitzman\DrupalTestTraits\Entity\NodeCreationTrait;
 use weitzman\DrupalTestTraits\MinkSetup;
 
 /**
@@ -18,6 +19,11 @@ class ExampleTest extends TestCase {
    */
   use MinkSetup;
   use DrupalSetup;
+
+    /**
+     * Automatically cleanup nodes created via `$this->createNode()`.
+     */
+    use NodeCreationTrait;
 
   /**
    * An example test method; note that Drupal API's and Mink are available.
@@ -42,10 +48,16 @@ class ExampleTest extends TestCase {
       ],
     ]);
     $node->setPublished(TRUE)->save();
+    // If directly creating entities in tests, they can be marked for cleanup.
     $this->markEntityForCleanup($node);
 
     $this->visit($file->url());
     $this->assertEquals($this->getSession()->getStatusCode(), 200);
+
+    // Nodes are automatically added for cleanup when using `weitzman\DrupalTestTraits\Entity\NodeCreationTrait`.
+    $node = $this->createNode(['type' => 'article']);
+    $this->visit($node->toUrl()->toString());
+    $this->assertEquals(200, $this->getSession()->getStatusCode());
   }
 
 }
