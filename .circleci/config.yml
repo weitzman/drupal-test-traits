@@ -10,7 +10,7 @@ jobs:
       - APACHE_DOCROOT=~/dtt/web
     steps:
       - checkout
-      - run: sudo composer self-update
+      - run: composer self-update
       - restore_cache: # special step to restore the dependency cache if `composer.lock` does not change
           keys:
             - composer-v1-{{ checksum "composer.lock" }}
