@@ -42,10 +42,6 @@ trait DrupalSetup
 
     // Register stream wrappers.
     $kernel->getContainer()->get('stream_wrapper_manager')->register();
-
-    // Drupal's file API is crufty/buggy, so ensure that public:// exists.
-    $dir = 'public://';
-    file_prepare_directory($dir, FILE_CREATE_DIRECTORY);
   }
 
   /**
