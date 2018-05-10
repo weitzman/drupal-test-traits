@@ -26,7 +26,7 @@ trait MinkSetup
     $this->minkSession->start();
 
     // Create the artifacts directory if necessary (not functional yet).
-    $output_dir = getenv(DTT_OUTPUT_DIR);
+    $output_dir = getenv('DTT_OUTPUT_DIR');
     if ($output_dir && !is_dir($output_dir)) {
       mkdir($output_dir, 0777, TRUE);
     }

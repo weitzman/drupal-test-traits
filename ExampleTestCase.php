@@ -9,9 +9,7 @@ use weitzman\DrupalTestTraits\DrupalSetup;
 use weitzman\DrupalTestTraits\MinkSetup;
 
 /**
- * Verify media functionality.
- *
- * @group mass_media
+ * A model test class using 2 traits from Drupal Test Traits.
  */
 class ExampleTestCase extends TestCase {
 
@@ -22,14 +20,12 @@ class ExampleTestCase extends TestCase {
   use DrupalSetup;
 
   /**
-   * An example test class, illustrating that Drupal API's and Mink are available.
+   * An example test method; note that Drupal API's and Mink are available.
    */
-  public function testMediaDelete() {
+  public function testLlama() {
     // Create a file to upload.
     $destination = 'public://llama-23.txt';
-    $file = File::create([
-      'uri' => $destination,
-    ]);
+    $file = File::create(['uri' => $destination]);
     $file->setPermanent();
     $file->save();
     // Nothing copied the file so we do so.
@@ -37,10 +33,11 @@ class ExampleTestCase extends TestCase {
     file_unmanaged_copy($src, $destination, TRUE);
 
     // Create a "Llama" article.
+
     $node = \Drupal\node\Entity\Node::create([
       'title' => 'Llama',
-      'bundle' => 'article',
-      'field_upload_file' => [
+      'type' => 'article',
+      'field_image' => [
         'target_id' => $file->id(),
       ],
     ]);

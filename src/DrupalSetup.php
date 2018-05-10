@@ -29,7 +29,7 @@ trait DrupalSetup
     $finder = new DrupalFinder();
     $finder->locateRoot(__DIR__);
     $classLoader = include $finder->getVendorDir() . '/autoload.php';
-    $base_url = getenv('MINK_BASE_URL');
+    $base_url = getenv('DTT_BASE_URL');
     $parsed_url = parse_url($base_url);
     $server = [
       'SCRIPT_FILENAME' => getcwd() . '/index.php',

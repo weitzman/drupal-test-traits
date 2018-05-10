@@ -16,12 +16,20 @@ product quality and not conversations, this is a testing approach for you.
 
     composer require 'weitzman/drupal-test-traits'
 
-## Example Usage
+## Example TestCase
 
 Add a `use` statement for the desired trait to your PHPUnit test class. Since our
 traits have a @before annotation, Drupal and Mink are automatically setup. 
 
 [An example TestCase](./ExampleTestCase.php)
+
+## Running Tests
+
+- You must specify the URL for your site as an environment variable. One way to do that:
+
+```
+DTT_BASE_URL=http://127.0.0.1:8888 vendor/bin/phpunit
+```
 
 ## Available traits
 
