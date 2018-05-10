@@ -39,6 +39,11 @@ You must specify the URL to your site as an environment variable: `DTT_BASE_URL=
 
 - **MinkSetup** -- _Create a Mink session._  
   Makes Mink available for browser control, and offers a few helper methods.
+  
+## Contributing
+
+Contributions to the this project are welcome! Please file issues and pull requests.
+All pull requests are automatically tested at [CircleCI](https://circleci.com/gh/weitzman/drupal-test-traits).  
 
 ## Colophon
 
