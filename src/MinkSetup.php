@@ -6,6 +6,9 @@ trait MinkSetup
 {
   protected $minkBaseUrl;
 
+  /**
+   * @var \Behat\Mink\Session
+   */
   protected $minkSession;
 
   /**
@@ -27,6 +30,15 @@ trait MinkSetup
     if ($output_dir && !is_dir($output_dir)) {
       mkdir($output_dir, 0777, TRUE);
     }
+  }
+
+  /**
+   * Stop session.
+   *
+   * @after
+   */
+  public function tearDownMinkSession() {
+    $this->getSession()->stop();
   }
 
   public function getSession() {
