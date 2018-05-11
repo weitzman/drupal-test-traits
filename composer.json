@@ -10,7 +10,7 @@
     ],
     "require": {
         "php": ">=7.0.0",
-        "phpunit/phpunit": "~5.7",
+        "phpunit/phpunit": "^5.7|^6.5",
         "behat/mink": "^1.7",
         "behat/mink-goutte-driver": "^1.2",
         "webflo/drupal-finder": "^1.1"
