@@ -6,7 +6,8 @@ use PHPUnit\Framework\TestCase;
 use weitzman\DrupalTestTraits\Entity\NodeCreationTrait;
 
 /**
- * You are encouraged to copy the methods here into your own base class.
+ * You are encouraged to copy the methods here into your own base class. Or if
+ * you are lazy like me, you can extend it directly.
  */
 abstract class ExampleBase extends TestCase {
 

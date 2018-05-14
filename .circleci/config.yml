@@ -5,7 +5,7 @@ jobs:
     working_directory: /var/www/code
     docker:
       # @see https://github.com/massgov/Drupal-Container
-      - image: massgov/drupal-container:1.0.2-ci
+      - image: massgov/drupal-container:1.0.6-ci
         environment:
           COMPOSER_ALLOW_SUPERUSER: 1
           DTT_BASE_URL: http://127.0.0.1
