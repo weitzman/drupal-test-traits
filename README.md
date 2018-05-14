@@ -45,6 +45,12 @@ serves as a model that you can copy.
 - **NodeCreationTrait**  
   Create nodes that are automatically deleted at end of test method.
   
+  **TaxonomyCreationTrait**
+  Create terms and vocabularies that are deleted at the end of the test method.
+  
+  **UserCreationTrait**
+  Create users and roles that are deleted at the end of the test method.
+  
 ## Contributing
 
 Contributions to the this project are welcome! Please file issues and pull requests.
