@@ -21,9 +21,8 @@ product quality and not conversations, this is a testing approach for you.
 
 See [ExampleTest.php](./tests/ExampleTest.php)
 
-In addition to a test like above, you must create or edit a base TestCase class 
-which is then extended by all the tests in your project. [ExampleBase.php](src/ExampleBase.php) 
-serves as a model that you can copy.
+In addition to a test like above, you must extend a base class. [ExampleBase.php](src/ExampleBase.php) 
+serves as a model that you can copy (or use directly if you prefer).
   
 ## Running your tests
 
