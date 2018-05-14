@@ -4,7 +4,7 @@ version: '3.1'
 # This file mimics the environment that CircleCI uses to test DTT (tests/config.yml).
 services:
   drupal:
-    image: "massgov/drupal-container:1.0.4-dev"
+    image: "massgov/drupal-container:1.0.6-dev"
     volumes:
       # Non OSX users may want to set VOLUME_FLAGS via the .env file.
       - ..:/var/www/code:${VOLUME_FLAGS-cached}
