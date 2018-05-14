@@ -9,7 +9,7 @@ use weitzman\DrupalTestTraits\Entity\NodeCreationTrait;
  * You are encouraged to copy the methods here into your own base class. All your
  * tests then extend it.
  */
-class ExampleBase extends TestCase {
+abstract class ExampleBase extends TestCase {
 
   use DrupalSetup;
   use MinkSetup;
