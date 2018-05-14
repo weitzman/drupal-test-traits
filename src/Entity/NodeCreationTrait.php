@@ -3,7 +3,6 @@
 namespace weitzman\DrupalTestTraits\Entity;
 
 use Drupal\Tests\node\Traits\NodeCreationTrait as CoreNodeCreationTrait;
-use Drupal\Tests\RandomGeneratorTrait;
 
 /**
  * Wraps the node creation trait to track entities for deletion.
@@ -14,7 +13,6 @@ trait NodeCreationTrait
   use CoreNodeCreationTrait {
     createNode as coreCreateNode;
   }
-  use RandomGeneratorTrait;
 
   /**
    * Creates a node and marks it for automatic cleanup.
