@@ -23,4 +23,4 @@ jobs:
       - run: composer install -n --prefer-dist
       - run: {name: 'Start Apache', command: '/usr/local/bin/apache2-foreground-enhanced', background: true}
       - run: drush si -yv --db-url=mysql://circle:circle@127.0.0.1/circle standard
-      - run: phpunit tests
+      - run: phpunit --bootstrap=web/core/tests/bootstrap.php tests
