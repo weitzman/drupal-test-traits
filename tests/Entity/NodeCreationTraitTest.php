@@ -2,20 +2,13 @@
 
 namespace weitzman\DrupalTestTraits\Tests\Entity;
 
-use PHPUnit\Framework\TestCase;
-use weitzman\DrupalTestTraits\DrupalSetup;
-use weitzman\DrupalTestTraits\Entity\NodeCreationTrait;
+use weitzman\DrupalTestTraits\ExampleBase;
 
 /**
  * Test the node creation trait.
  */
-class NodeCreationTraitTest extends TestCase
-{
-  use DrupalSetup;
-  use NodeCreationTrait;
-
-  public function testAutoCleanup()
-  {
+class NodeCreationTraitTest extends ExampleBase {
+  public function testAutoCleanup() {
     $node = $this->createNode(['type' => 'article']);
     $this->assertCount(1, $this->cleanupEntities);
     $this->assertEquals($node->id(), $this->cleanupEntities[0]->id());

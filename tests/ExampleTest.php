@@ -7,19 +7,15 @@ use Drupal\file\Entity\File;
 use PHPUnit\Framework\TestCase;
 use weitzman\DrupalTestTraits\DrupalSetup;
 use weitzman\DrupalTestTraits\Entity\NodeCreationTrait;
+use weitzman\DrupalTestTraits\ExampleBase;
 use weitzman\DrupalTestTraits\MinkSetup;
 
 /**
- * A model test class using 2 traits from Drupal Test Traits.
+ * A model test case using traits from Drupal Test Traits.
+ *
+ * The code in ExampleBase.php should be incorporated into your own test base class.
  */
-class ExampleTest extends TestCase {
-
-  /**
-   * Make Mink and Drupal available to this class.
-   */
-  use MinkSetup;
-  use DrupalSetup;
-  use NodeCreationTrait;
+class ExampleTest extends ExampleBase {
 
   /**
    * An example test method; note that Drupal API's and Mink are available.

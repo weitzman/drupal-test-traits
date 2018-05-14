@@ -13,9 +13,8 @@ trait MinkSetup
 
   /**
    *
-   * Due to the annotation below, this method runs automatically when the trait is `use`d.
+   * Setup a Mink session. Call this from your setUp() method.
    *
-   * @before
    */
   public function setupMinkSession()
   {
@@ -33,9 +32,7 @@ trait MinkSetup
   }
 
   /**
-   * Stop session.
-   *
-   * @after
+   * Stop session. Call this from your tearDown() method.
    */
   public function tearDownMinkSession() {
     $this->getSession()->stop();
