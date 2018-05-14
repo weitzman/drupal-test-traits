@@ -19,7 +19,7 @@ product quality and not conversations, this is a testing approach for you.
 
 ## Authoring Tests
 
-See [ExampleTest.php](./ExampleTest.php)
+See [ExampleTest.php](./tests/ExampleTest.php)
 
 Add a `use` statement for the desired trait to your PHPUnit test class. Since our
 traits have a @before annotation, Drupal and Mink are automatically setup. 
@@ -45,7 +45,9 @@ Depending on your setup, you may wish to run phpunit as the web server user `su 
 ## Contributing
 
 Contributions to the this project are welcome! Please file issues and pull requests.
-All pull requests are automatically tested at [CircleCI](https://circleci.com/gh/weitzman/drupal-test-traits).  
+All pull requests are automatically tested at [CircleCI](https://circleci.com/gh/weitzman/drupal-test-traits).
+
+See .docker/docker-compose.yml for a handy development environment identical to our CircleCI.  
 
 ## Colophon
 

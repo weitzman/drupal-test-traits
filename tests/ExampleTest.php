@@ -1,6 +1,7 @@
 <?php
 
-namespace Drupal\Tests\mass_media\ExistingSite;
+# Use your module's namespace such as the one below.
+# namespace Drupal\Tests\mass_media\ExistingSite;
 
 use Drupal\file\Entity\File;
 use Drupal\node\Entity\Node;
@@ -33,7 +34,6 @@ class ExampleTest extends TestCase {
     file_unmanaged_copy($src, $destination, TRUE);
 
     // Create a "Llama" article.
-
     $node = Node::create([
       'title' => 'Llama',
       'type' => 'article',
@@ -44,7 +44,12 @@ class ExampleTest extends TestCase {
     $node->setPublished(TRUE)->save();
     $this->markEntityForCleanup($node);
 
-    $this->visit($file->url());
+    $url = $file->url();
+    $this->visit($url);
+    $this->assertEquals($this->getSession()->getStatusCode(), 200);
+
+    $url = $node->toUrl()->toString();
+    $this->visit($url);
     $this->assertEquals($this->getSession()->getStatusCode(), 200);
   }
 
