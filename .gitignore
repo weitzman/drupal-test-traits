@@ -1,3 +1,4 @@
 /vendor/
 /web/
 /composer.lock
+.env
