@@ -4,7 +4,6 @@
 # namespace Drupal\Tests\mass_media\ExistingSite;
 
 use Drupal\file\Entity\File;
-use Drupal\node\Entity\Node;
 use PHPUnit\Framework\TestCase;
 use weitzman\DrupalTestTraits\DrupalSetup;
 use weitzman\DrupalTestTraits\Entity\NodeCreationTrait;
@@ -46,6 +45,7 @@ class ExampleTest extends TestCase {
     $node->setPublished(TRUE)->save();
 
     $url = $file->url();
+    // Now use Mink to browse web pages.
     $this->visit($url);
     $this->assertEquals($this->getSession()->getStatusCode(), 200);
 
