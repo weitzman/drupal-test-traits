@@ -7,6 +7,7 @@ use Drupal\file\Entity\File;
 use Drupal\node\Entity\Node;
 use PHPUnit\Framework\TestCase;
 use weitzman\DrupalTestTraits\DrupalSetup;
+use weitzman\DrupalTestTraits\Entity\NodeCreationTrait;
 use weitzman\DrupalTestTraits\MinkSetup;
 
 /**
@@ -19,6 +20,7 @@ class ExampleTest extends TestCase {
    */
   use MinkSetup;
   use DrupalSetup;
+  use NodeCreationTrait;
 
   /**
    * An example test method; note that Drupal API's and Mink are available.
@@ -33,8 +35,8 @@ class ExampleTest extends TestCase {
     $src = 'core/tests/Drupal/Tests/Component/FileCache/Fixtures/llama-23.txt';
     file_unmanaged_copy($src, $destination, TRUE);
 
-    // Create a "Llama" article.
-    $node = Node::create([
+    // Create a "Llama" article. Will be automatically cleaned up at end of test.
+    $node = $this->createNode([
       'title' => 'Llama',
       'type' => 'article',
       'field_image' => [
@@ -42,7 +44,6 @@ class ExampleTest extends TestCase {
       ],
     ]);
     $node->setPublished(TRUE)->save();
-    $this->markEntityForCleanup($node);
 
     $url = $file->url();
     $this->visit($url);

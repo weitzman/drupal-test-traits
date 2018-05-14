@@ -26,12 +26,11 @@ traits have a @before annotation, Drupal and Mink are automatically setup.
 
 ## Running Tests
 
-You must specify the URL to your site as an environment variable: `DTT_BASE_URL=http://example.com`. Here are two ways to do that:
-
-- Enter that line into a .env file. These files are supported by [drupal-project](https://github.com/drupal-composer/drupal-project/blob/8.x/.env.example) and [Docker](https://docs.docker.com/compose/env-file/). 
-- Specify an environment variable at runtime: `DTT_BASE_URL=http://127.0.0.1:8888 vendor/bin/phpunit ...`
-
-Depending on your setup, you may wish to run phpunit as the web server user `su -s /bin/bash www-data -c "vendor/bin/phpunit ..."`
+- You must specify the URL to your site as an environment variable: `DTT_BASE_URL=http://example.com`. Here are two ways to do that:
+    - Enter that line into a .env file. These files are supported by [drupal-project](https://github.com/drupal-composer/drupal-project/blob/8.x/.env.example) and [Docker](https://docs.docker.com/compose/env-file/). 
+    - Specify an environment variable at runtime: `DTT_BASE_URL=http://127.0.0.1:8888 vendor/bin/phpunit ...`
+- If you use NodeTrait, add --bootstrap like so: `--bootstrap=web/core/tests/bootstrap.php ` (points at Drupal core) 
+- Depending on your setup, you may wish to run phpunit as the web server user `su -s /bin/bash www-data -c "vendor/bin/phpunit ..."`
 
 ## Available traits
 
