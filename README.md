@@ -24,7 +24,7 @@ See [ExampleTest.php](./tests/ExampleTest.php)
 In addition to a test like above, you must extend a base class. [ExistingSiteTestCase.php](src/ExistingSiteTestCase.php) 
 serves as a model that you can use directly, extend, or feel free to copy its code into your base class.
   
-## Running your tests
+## Running tests
 
 - You must specify the URL to your site as an environment variable: `DTT_BASE_URL=http://example.com`. Here are two ways to do that:
     - Enter that line into a .env file. These files are supported by [drupal-project](https://github.com/drupal-composer/drupal-project/blob/8.x/.env.example) and [Docker](https://docs.docker.com/compose/env-file/). 
