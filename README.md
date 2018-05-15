@@ -26,10 +26,11 @@ serves as a model that you can use directly, extend, or feel free to copy its co
   
 ## Running tests
 
-- You must specify the URL to your site as an environment variable: `DTT_BASE_URL=http://example.com`. Here are two ways to do that:
+- You must specify the URL to your site as an environment variable: `DTT_BASE_URL=http://example.com`. Here are three ways to do that:
+    - Specify in a phpunit.xml. [See example](docs/phpunit.xml).
     - Enter that line into a .env file. These files are supported by [drupal-project](https://github.com/drupal-composer/drupal-project/blob/8.x/.env.example) and [Docker](https://docs.docker.com/compose/env-file/). 
     - Specify an environment variable at runtime: `DTT_BASE_URL=http://127.0.0.1:8888 vendor/bin/phpunit ...`
-- Add --bootstrap option like so: `--bootstrap=web/core/tests/bootstrap.php ` (points at Drupal core). Required when you use NodeCreationTrait. Alternatively, you may specify this in a phpunit.xml.
+- Add --bootstrap option like so: `--bootstrap=web/core/tests/bootstrap.php ` (points at Drupal core). Required when you use NodeCreationTrait. Alternatively, specify in a [phpunit.xml](docs/phpunit.xml).
 - Depending on your setup, you may wish to run phpunit as the web server user `su -s /bin/bash www-data -c "vendor/bin/phpunit ..."`
 
 ## Available traits
