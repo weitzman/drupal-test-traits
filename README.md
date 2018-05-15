@@ -44,10 +44,10 @@ serves as a model that you can use directly, extend, or feel free to copy its co
 - **NodeCreationTrait**  
   Create nodes that are automatically deleted at end of test method.
   
-  **TaxonomyCreationTrait**
+- **TaxonomyCreationTrait**
   Create terms and vocabularies that are deleted at the end of the test method.
   
-  **UserCreationTrait**
+- **UserCreationTrait**
   Create users and roles that are deleted at the end of the test method.
   
 ## Contributing
