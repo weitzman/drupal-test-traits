@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Copy code below into your own phpunit.xml file-->
+<phpunit bootstrap="web/core/tests/bootstrap.php">
+    <env name="DTT_BASE_URL" value="http://example.com"/>
+</phpunit>
