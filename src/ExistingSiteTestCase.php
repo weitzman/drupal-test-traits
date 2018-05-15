@@ -10,10 +10,12 @@ use weitzman\DrupalTestTraits\Entity\TaxonomyCreationTrait;
 use weitzman\DrupalTestTraits\Entity\UserCreationTrait;
 
 /**
- * You are encouraged to copy the methods here into your own base class. Or if
- * you are lazy like me, you can extend it directly.
+ * You may use this class in any of these ways:
+ * - Copy its code into your own base class.
+ * - Have your base class extend this class.
+ * - Your tests may extend this class directly.
  */
-abstract class ExampleBase extends TestCase {
+abstract class ExistingSiteTestCase extends TestCase {
 
   use DrupalSetup;
   use MinkSetup;
@@ -34,6 +36,9 @@ abstract class ExampleBase extends TestCase {
     $this->setupMinkSession();
   }
 
+  /**
+   * @throws \Drupal\Core\Entity\EntityStorageException
+   */
   public function tearDown() {
     parent::tearDown();
     $this->tearDownDrupal();

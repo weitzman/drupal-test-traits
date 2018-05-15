@@ -21,8 +21,8 @@ product quality and not conversations, this is a testing approach for you.
 
 See [ExampleTest.php](./tests/ExampleTest.php)
 
-In addition to a test like above, you must extend a base class. [ExampleBase.php](src/ExampleBase.php) 
-serves as a model that you can copy (or use directly if you prefer).
+In addition to a test like above, you must extend a base class. [ExistingSiteTestCase.php](src/ExistingSiteTestCase.php) 
+serves as a model that you can use directly, extend, or feel free to copy its code into your base class.
   
 ## Running your tests
 
