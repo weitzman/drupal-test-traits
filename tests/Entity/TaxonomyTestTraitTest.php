@@ -3,12 +3,12 @@
 namespace weitzman\DrupalTestTraits\Tests\Entity;
 
 use Drupal\taxonomy\Entity\Vocabulary;
-use weitzman\DrupalTestTraits\ExampleBase;
+use weitzman\DrupalTestTraits\ExistingSiteTestCase;
 
 /**
  * Tests the taxonomy creation trait.
  */
-class TaxonomyTestTraitTest extends ExampleBase
+class TaxonomyTestTraitTest extends ExistingSiteTestCase
 {
     public function testTermCreate()
     {

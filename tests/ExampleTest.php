@@ -4,14 +4,14 @@
 # namespace Drupal\Tests\mass_media\ExistingSite;
 
 use Drupal\taxonomy\Entity\Vocabulary;
-use weitzman\DrupalTestTraits\ExampleBase;
+use weitzman\DrupalTestTraits\ExistingSiteTestCase;
 
 /**
  * A model test case using traits from Drupal Test Traits.
  *
- * The code in ExampleBase.php should be incorporated into your own test base class.
+ * The code in ExistingSiteTestCaseeTestCase.php should be incorporated into your own test base class.
  */
-class ExampleTest extends ExampleBase {
+class ExampleTest extends ExistingSiteTestCase {
 
   /**
    * An example test method; note that Drupal API's and Mink are available.

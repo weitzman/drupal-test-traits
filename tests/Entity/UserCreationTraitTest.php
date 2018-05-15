@@ -3,12 +3,12 @@
 namespace weitzman\DrupalTestTraits\Tests\Entity;
 
 use Drupal\user\Entity\Role;
-use weitzman\DrupalTestTraits\ExampleBase;
+use weitzman\DrupalTestTraits\ExistingSiteTestCase;
 
 /**
  * Tests the user creation trait.
  */
-class UserCreationTraitTest extends ExampleBase
+class UserCreationTraitTest extends ExistingSiteTestCase
 {
     public function testUserCreation()
     {
