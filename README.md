@@ -17,7 +17,7 @@ product quality and not conversations, this is a testing approach for you.
 
     composer require 'weitzman/drupal-test-traits'
 
-## Authoring Tests
+## Authoring tests
 
 See [ExampleTest.php](./tests/ExampleTest.php)
 
