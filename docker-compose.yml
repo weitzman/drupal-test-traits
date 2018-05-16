@@ -7,7 +7,9 @@ services:
     image: "massgov/drupal-container:1.0.6-dev"
     volumes:
       # Non OSX users may want to set VOLUME_FLAGS via the .env file.
-      - ..:/var/www/code:${VOLUME_FLAGS-cached}
+      - .:/var/www/code:${VOLUME_FLAGS-cached}
+      # Set the path.
+      - .docker/.bashrc:/root/.bashrc
     environment:
       - APACHE_DOCROOT=/var/www/code/web
       - DTT_BASE_URL=http://127.0.0.1
