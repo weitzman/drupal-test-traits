@@ -1,6 +1,6 @@
 version: '3.1'
 
-# This file may be used for local development. It is not used by CircleCI.
+# This file may be used for local development of DTT. It is not used by CircleCI.
 # This file mimics the environment that CircleCI uses to test DTT (tests/config.yml).
 services:
   drupal:
