@@ -21,6 +21,7 @@ jobs:
       - checkout
       - run: echo 'export PATH=/var/www/code/vendor/bin:$PATH' >> $BASH_ENV
       - run: composer install -n --prefer-dist
+      - run: vendor/bin/phpcs --report-full
       - run: {name: 'Start Apache', command: '/usr/local/bin/apache2-foreground-enhanced', background: true}
       - run: drush si -yv --db-url=mysql://circle:circle@127.0.0.1/circle standard
       - run: phpunit --bootstrap=web/core/tests/bootstrap.php tests

@@ -9,10 +9,10 @@ use weitzman\DrupalTestTraits\ExistingSiteTestCase;
  */
 class NodeCreationTraitTest extends ExistingSiteTestCase
 {
-  public function testAutoCleanup()
-  {
-    $node = $this->createNode(['type' => 'article']);
-    $this->assertCount(1, $this->cleanupEntities);
-    $this->assertEquals($node->id(), $this->cleanupEntities[0]->id());
-  }
+    public function testAutoCleanup()
+    {
+        $node = $this->createNode(['type' => 'article']);
+        $this->assertCount(1, $this->cleanupEntities);
+        $this->assertEquals($node->id(), $this->cleanupEntities[0]->id());
+    }
 }

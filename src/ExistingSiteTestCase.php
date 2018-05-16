@@ -15,33 +15,36 @@ use weitzman\DrupalTestTraits\Entity\UserCreationTrait;
  * - Have your base class extend this class.
  * - Your tests may extend this class directly.
  */
-abstract class ExistingSiteTestCase extends TestCase {
+abstract class ExistingSiteTestCase extends TestCase
+{
 
-  use DrupalSetup;
-  use MinkSetup;
-  use NodeCreationTrait;
-  use UserCreationTrait;
-  use TaxonomyCreationTrait;
+    use DrupalSetup;
+    use MinkSetup;
+    use NodeCreationTrait;
+    use UserCreationTrait;
+    use TaxonomyCreationTrait;
 
   // The entity creation traits need this.
-  use RandomGeneratorTrait;
+    use RandomGeneratorTrait;
 
   // Core is still using this in role creation, so it must be included here when
   // using the UserCreationTrait.
-  use AssertLegacyTrait;
+    use AssertLegacyTrait;
 
-    public function setUp() {
-    parent::setUp();
-    $this->setupDrupal();
-    $this->setupMinkSession();
-  }
+    public function setUp()
+    {
+        parent::setUp();
+        $this->setupDrupal();
+        $this->setupMinkSession();
+    }
 
   /**
    * @throws \Drupal\Core\Entity\EntityStorageException
    */
-  public function tearDown() {
-    parent::tearDown();
-    $this->tearDownDrupal();
-    $this->tearDownMinkSession();
-  }
+    public function tearDown()
+    {
+        parent::tearDown();
+        $this->tearDownDrupal();
+        $this->tearDownMinkSession();
+    }
 }
