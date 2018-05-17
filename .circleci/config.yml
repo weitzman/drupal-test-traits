@@ -24,6 +24,7 @@ jobs:
       - run: vendor/bin/parallel-lint src tests
       - run: vendor/bin/phpcs --report-full
       - run: vendor/bin/drush si -yv --db-url=mysql://circle:circle@127.0.0.1/circle standard
+      - run: mkdir -p /tmp/test-results/phpunit
       - run: vendor/bin/phpunit --bootstrap=web/core/tests/bootstrap.php --log-junit /tmp/test-results/phpunit tests
       - store_test_results:
             path: /tmp/test-results
