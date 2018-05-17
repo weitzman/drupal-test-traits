@@ -10,21 +10,20 @@ use Drupal\Tests\node\Traits\NodeCreationTrait as CoreNodeCreationTrait;
 trait NodeCreationTrait
 {
 
-  use CoreNodeCreationTrait {
-    createNode as coreCreateNode;
-  }
+    use CoreNodeCreationTrait {
+        createNode as coreCreateNode;
+    }
 
-  /**
-   * Creates a node and marks it for automatic cleanup.
-   *
-   * @param array $settings
-   * @return \Drupal\node\NodeInterface
-   */
-  protected function createNode(array $settings = [])
-  {
-    $entity = $this->coreCreateNode($settings);
-    $this->markEntityForCleanup($entity);
-    return $entity;
-  }
-
+    /**
+     * Creates a node and marks it for automatic cleanup.
+     *
+     * @param array $settings
+     * @return \Drupal\node\NodeInterface
+     */
+    protected function createNode(array $settings = [])
+    {
+        $entity = $this->coreCreateNode($settings);
+        $this->markEntityForCleanup($entity);
+        return $entity;
+    }
 }
