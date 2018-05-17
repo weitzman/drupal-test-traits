@@ -38,8 +38,7 @@ trait MinkSetup
     // document matches the domain.
     // @see https://w3c.github.io/webdriver/webdriver-spec.html#add-cookie
     // @see https://www.w3.org/Bugs/Public/show_bug.cgi?id=20975
-    $session = $this->getSession();
-    $session->visit($this->minkBaseUrl);
+    $this->minkSession->visit($this->minkBaseUrl);
   }
 
   /**
