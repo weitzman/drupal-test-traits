@@ -46,6 +46,9 @@ trait MinkSetup
    */
   public function tearDownMinkSession() {
     $this->getSession()->stop();
+    // Avoid leaking memory in test cases (which are retained for a long time)
+    // by removing references to all the things.
+    $this->minkSession = NULL;
   }
 
   public function getSession() {

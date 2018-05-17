@@ -65,10 +65,12 @@ trait DrupalSetup
     foreach ($this->cleanupEntities as $entity) {
         $entity->delete();
     }
-    // Remove references to deleted entities and shut down Kernel so we don't leak memory.
+    // Avoid leaking memory in test cases (which are retained for a long time)
+    // by removing references to all the things.
     $this->cleanupEntities = [];
     $this->kernel->shutdown();
     $this->kernel = NULL;
+    $this->container = NULL;
   }
 
   /**
