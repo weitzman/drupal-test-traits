@@ -17,6 +17,20 @@ trait DrupalSetup
   protected $cleanupEntities = [];
 
   /**
+   * The container.
+   *
+   * @var \Symfony\Component\DependencyInjection\ContainerInterface
+   */
+  protected $container;
+
+  /**
+   * The Drupal kernel.
+   *
+   * @var \Drupal\Core\DrupalKernel
+   */
+  protected $kernel;
+
+  /**
    * Bootstrap Drupal.
    *
    * Due to the annotation below, this method runs automatically when the trait is `use`d.
@@ -36,12 +50,13 @@ trait DrupalSetup
       'SCRIPT_NAME' => isset($parsed_url['path']) ? $parsed_url['path'] . 'index.php' : '/index.php',
     ];
     $request = Request::create($base_url, 'GET', [], [], [], $server);
-    $kernel = DrupalKernel::createFromRequest($request, $classLoader, 'existing-site-testcase', false, $finder->getDrupalRoot());
+    $this->kernel = DrupalKernel::createFromRequest($request, $classLoader, 'existing-site-testcase', false, $finder->getDrupalRoot());
     chdir(DRUPAL_ROOT);
-    $kernel->prepareLegacyRequest($request);
+    $this->kernel->prepareLegacyRequest($request);
+    $this->container = $this->kernel->getContainer();
 
     // Register stream wrappers.
-    $kernel->getContainer()->get('stream_wrapper_manager')->register();
+    $this->container->get('stream_wrapper_manager')->register();
   }
 
   /**
