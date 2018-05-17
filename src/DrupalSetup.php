@@ -68,6 +68,7 @@ trait DrupalSetup
     // Remove references to deleted entities and shut down Kernel so we don't leak memory.
     $this->cleanupEntities = [];
     $this->kernel->shutdown();
+    $this->kernel = NULL;
   }
 
   /**
