@@ -17,21 +17,21 @@ product quality and not conversations, this is a testing approach for you.
 
     composer require 'weitzman/drupal-test-traits'
 
-## Authoring Tests
+## Authoring tests
 
-See [ExampleTest.php](./ExampleTest.php)
+See [ExampleTest.php](./tests/ExampleTest.php)
 
-Add a `use` statement for the desired trait to your PHPUnit test class. Since our
-traits have a @before annotation, Drupal and Mink are automatically setup. 
+In addition to a test like above, you must extend a base class. [ExistingSiteTestCase.php](src/ExistingSiteTestCase.php) 
+serves as a model that you can use directly, extend, or feel free to copy its code into your base class.
+  
+## Running tests
 
-## Running Tests
-
-You must specify the URL to your site as an environment variable: `DTT_BASE_URL=http://example.com`. Here are two ways to do that:
-
-- Enter that line into a .env file. These files are supported by [drupal-project](https://github.com/drupal-composer/drupal-project/blob/8.x/.env.example) and [Docker](https://docs.docker.com/compose/env-file/). 
-- Specify an environment variable at runtime: `DTT_BASE_URL=http://127.0.0.1:8888 vendor/bin/phpunit ...`
-
-Depending on your setup, you may wish to run phpunit as the web server user `su -s /bin/bash www-data -c "vendor/bin/phpunit ..."`
+- You must specify the URL to your site as an environment variable: `DTT_BASE_URL=http://example.com`. Here are three ways to do that:
+    - Specify in a phpunit.xml. [See example](docs/phpunit.xml).
+    - Enter that line into a .env file. These files are supported by [drupal-project](https://github.com/drupal-composer/drupal-project/blob/8.x/.env.example) and [Docker](https://docs.docker.com/compose/env-file/). 
+    - Specify an environment variable at runtime: `DTT_BASE_URL=http://127.0.0.1:8888 vendor/bin/phpunit ...`
+- Add --bootstrap option like so: `--bootstrap=web/core/tests/bootstrap.php ` (points at Drupal core). Required when you use NodeCreationTrait. Alternatively, specify in a [phpunit.xml](docs/phpunit.xml).
+- Depending on your setup, you may wish to run phpunit as the web server user `su -s /bin/bash www-data -c "vendor/bin/phpunit ..."`
 
 ## Available traits
 
@@ -41,11 +41,22 @@ Depending on your setup, you may wish to run phpunit as the web server user `su 
 
 - **MinkSetup** -- _Create a Mink session._  
   Makes Mink available for browser control, and offers a few helper methods.
+
+- **NodeCreationTrait**  
+  Create nodes that are automatically deleted at end of test method.
+  
+- **TaxonomyCreationTrait**
+  Create terms and vocabularies that are deleted at the end of the test method.
+  
+- **UserCreationTrait**
+  Create users and roles that are deleted at the end of the test method.
   
 ## Contributing
 
 Contributions to the this project are welcome! Please file issues and pull requests.
-All pull requests are automatically tested at [CircleCI](https://circleci.com/gh/weitzman/drupal-test-traits).  
+All pull requests are automatically tested at [CircleCI](https://circleci.com/gh/weitzman/drupal-test-traits).
+
+See .docker/docker-compose.yml for a handy development environment identical to our CircleCI.  
 
 ## Colophon
 

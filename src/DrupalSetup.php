@@ -31,11 +31,7 @@ trait DrupalSetup
   protected $kernel;
 
   /**
-   * Bootstrap Drupal.
-   *
-   * Due to the annotation below, this method runs automatically when the trait is `use`d.
-   *
-   * @before
+   * Bootstrap Drupal. Call this from your setUp() method.
    */
   public function setupDrupal()
   {
@@ -60,7 +56,7 @@ trait DrupalSetup
   }
 
   /**
-   * @after
+   * Delete marked entities. Call this from your case's tearDown() method.
    *
    * @throws \Drupal\Core\Entity\EntityStorageException
    */
