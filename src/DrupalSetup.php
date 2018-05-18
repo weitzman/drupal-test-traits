@@ -9,6 +9,14 @@ use Symfony\Component\HttpFoundation\Request;
 
 trait DrupalSetup
 {
+
+    /**
+     * A flag to track when we've restored the error handler.
+     *
+     * @var bool
+     */
+    static $restoredErrorHandler = FALSE;
+
     /**
      * Entities to clean up.
      *
@@ -53,6 +61,16 @@ trait DrupalSetup
             false,
             $finder->getDrupalRoot()
         );
+
+        // The DrupalKernel only initializes the environment once which is where
+        // it sets the Drupal error handler. We can therefore only restore it
+        // once.
+        if (!static::$restoredErrorHandler) {
+            restore_error_handler();
+            restore_exception_handler();
+            static::$restoredErrorHandler = TRUE;
+        }
+
         chdir(DRUPAL_ROOT);
         $this->kernel->prepareLegacyRequest($request);
         $this->container = $this->kernel->getContainer();
