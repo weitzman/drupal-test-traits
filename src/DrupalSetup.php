@@ -15,7 +15,7 @@ trait DrupalSetup
      *
      * @var bool
      */
-    static $restoredErrorHandler = FALSE;
+    static protected $restoredErrorHandler = false;
 
     /**
      * Entities to clean up.
@@ -68,7 +68,7 @@ trait DrupalSetup
         if (!static::$restoredErrorHandler) {
             restore_error_handler();
             restore_exception_handler();
-            static::$restoredErrorHandler = TRUE;
+            static::$restoredErrorHandler = true;
         }
 
         chdir(DRUPAL_ROOT);
