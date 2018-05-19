@@ -2,6 +2,7 @@
 <!--Copy code below into your own phpunit.xml file-->
 <phpunit bootstrap="web/core/tests/bootstrap.php">
     <env name="DTT_BASE_URL" value="http://example.com"/>
+    <env name="DTT_API_URL" value="http://localhost:9222"/>
 
     <!-- Automatically run all ExistingSite tests alongside unit, and kernel
          tests in custom code. -->
