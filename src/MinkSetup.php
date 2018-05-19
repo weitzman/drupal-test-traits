@@ -2,27 +2,53 @@
 
 namespace weitzman\DrupalTestTraits;
 
+use Behat\Mink\Driver\GoutteDriver;
+use Behat\Mink\Mink;
+use Behat\Mink\Session;
+
 trait MinkSetup
 {
+
+    /**
+     * @var \Behat\Mink\Mink
+     */
+    protected $mink;
+
+    /**
+     * @var \Behat\Mink\Driver\DriverInterface
+     */
+    protected $driver;
+
     protected $minkBaseUrl;
 
     /**
-     * @var \Behat\Mink\Session
+     * @return \Behat\Mink\Driver\DriverInterface
      */
-    protected $minkSession;
+    protected function getDriverInstance()
+    {
+        if (!isset($this->driver)) {
+            $this->driver = new GoutteDriver();
+        }
+        return $this->driver;
+    }
 
     /**
      *
      * Setup a Mink session. Call this from your setUp() method.
      *
      */
-    public function setupMinkSession()
+    protected function setupMinkSession()
     {
         $this->minkBaseUrl = getenv('DTT_BASE_URL') ?: 'http://localhost:8000';
 
-        $driver = new \Behat\Mink\Driver\GoutteDriver();
-        $this->minkSession= new \Behat\Mink\Session($driver);
-        $this->minkSession->start();
+        $driver = $this->getDriverInstance();
+        $session= new Session($driver);
+        $this->mink = new Mink();
+        $this->mink = new Mink([
+            'default' => $session,
+        ]);
+        $this->mink->setDefaultSessionName('default');
+        $session->start();
 
         // Create the artifacts directory if necessary (not functional yet).
         $output_dir = getenv('DTT_OUTPUT_DIR');
@@ -38,40 +64,40 @@ trait MinkSetup
         // document matches the domain.
         // @see https://w3c.github.io/webdriver/webdriver-spec.html#add-cookie
         // @see https://www.w3.org/Bugs/Public/show_bug.cgi?id=20975
-        $this->minkSession->visit($this->minkBaseUrl . '/core/misc/druplicon.png');
+        $this->visit($this->minkBaseUrl . '/core/misc/druplicon.png');
     }
 
     /**
      * Stop session. Call this from your tearDown() method.
      */
-    public function tearDownMinkSession()
+    protected function tearDownMinkSession()
     {
         $this->getSession()->stop();
         // Avoid leaking memory in test cases (which are retained for a long time)
         // by removing references to all the things.
-        $this->minkSession = null;
+        $this->mink = null;
     }
 
-    public function getSession()
+    protected function getSession()
     {
-        return $this->minkSession;
+        return $this->mink->getSession();
     }
 
-    public function getCurrentPage()
+    protected function getCurrentPage()
     {
-        return $this->minkSession->getPage();
+        return $this->getSession()->getPage();
     }
 
-    public function getCurrentPageContent()
+    protected function getCurrentPageContent()
     {
         return $this->getCurrentPage()->getContent();
     }
 
-    public function visit($url)
+    protected function visit($url)
     {
         if (!parse_url($url, PHP_URL_SCHEME)) {
             $url = $this->minkBaseUrl . $url;
         }
-        $this->minkSession->visit($url);
+        $this->getSession()->visit($url);
     }
 }

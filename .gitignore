@@ -2,3 +2,4 @@
 /web/
 /composer.lock
 .env
+.idea
