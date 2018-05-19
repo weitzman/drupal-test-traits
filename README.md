@@ -67,7 +67,8 @@ See the [#testing channel on Drupal Slack](https://drupal.slack.com/messages/C22
 
 ## Colophon
 
-- **Author**: Created by [Moshe Weitzman](http://weitzman.github.io). 
+- **Author**: Created by [Moshe Weitzman](http://weitzman.github.io).
+- **Maintainers: Maintained by [Moshe Weitzman](http://weitzman.github.io), [Rob Bayliss](https://github.com/rbayliss), and the Community.
 - **License**: Licensed under the [MIT license][mit]
 
 [mit]: ./LICENSE.md
