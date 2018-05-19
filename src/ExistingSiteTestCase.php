@@ -19,7 +19,7 @@ abstract class ExistingSiteTestCase extends TestCase
 {
 
     use DrupalSetup;
-    use WebDriverSetup;
+    use MinkSetup;
     use NodeCreationTrait;
     use UserCreationTrait;
     use TaxonomyCreationTrait;
