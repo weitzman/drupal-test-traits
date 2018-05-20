@@ -43,7 +43,6 @@ trait GoutteTrait
 
         $driver = $this->getDriverInstance();
         $session= new Session($driver);
-        $this->mink = new Mink();
         $this->mink = new Mink([
             'default' => $session,
         ]);

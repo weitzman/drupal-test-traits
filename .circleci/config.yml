@@ -32,8 +32,9 @@ jobs:
             - /root/.composer
       - run: vendor/bin/parallel-lint src tests
       - run: vendor/bin/phpcs --report-full
-      - run: vendor/bin/drush si -yv --db-url=mysql://circle:circle@127.0.0.1/circle standard
+      - run: vendor/bin/drush si -yv --db-url=mysql://circle:circle@127.0.0.1/circle --account-name=admin --account-pass=password standard
       - run: mkdir -p /tmp/test-results/phpunit
+      - run: chown -R www-data:www-data .
       - run: vendor/bin/phpunit --debug --colors --bootstrap=web/core/tests/bootstrap.php --log-junit /tmp/test-results/phpunit/results.xml tests
       - store_test_results:
             path: /tmp/test-results

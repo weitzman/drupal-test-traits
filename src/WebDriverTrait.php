@@ -8,13 +8,6 @@ trait WebDriverTrait
 {
 
     /**
-     * API url for chrome headless.
-     *
-     * @var string
-     */
-    protected $webDriverApiUrl;
-
-    /**
      * @return \Behat\Mink\Driver\DriverInterface
      */
     protected function getDriverInstance()
