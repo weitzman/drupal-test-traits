@@ -6,7 +6,7 @@ use Behat\Mink\Driver\GoutteDriver;
 use Behat\Mink\Mink;
 use Behat\Mink\Session;
 
-trait MinkSetup
+trait GoutteTrait
 {
 
     /**

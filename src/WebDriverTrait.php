@@ -4,9 +4,8 @@ namespace weitzman\DrupalTestTraits;
 
 use DMore\ChromeDriver\ChromeDriver;
 
-trait WebDriverSetup
+trait WebDriverTrait
 {
-    use MinkSetup;
 
     /**
      * API url for chrome headless.

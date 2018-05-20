@@ -2,12 +2,12 @@
 
 namespace weitzman\DrupalTestTraits\Tests\Entity;
 
-use weitzman\DrupalTestTraits\ExistingSiteTestCase;
+use weitzman\DrupalTestTraits\ExistingSiteBase;
 
 /**
  * Test the node creation trait.
  */
-class NodeCreationTraitTest extends ExistingSiteTestCase
+class NodeCreationTraitTest extends ExistingSiteBase
 {
     public function testAutoCleanup()
     {
