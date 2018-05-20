@@ -34,6 +34,7 @@ You may use these directly, extend them, or feel free to copy their minimal code
     - Specify environment variables at runtime: `DTT_BASE_URL=http://127.0.0.1:8888;DTT_API_URL=http://localhost:9222 vendor/bin/phpunit ...`
 - Add --bootstrap option like so: `--bootstrap=web/core/tests/bootstrap.php ` ([points into Drupal core](https://github.com/drupal/drupal/blob/8.6.x/core/tests/bootstrap.php))). Alternatively, specify in a [phpunit.xml](docs/phpunit.xml).
 - Depending on your setup, you may wish to run phpunit as the web server user `su -s /bin/bash www-data -c "vendor/bin/phpunit ..."`
+- For quick debugging in javascript use `file_put_contents('public://screenshot.png', $this->getSession()->getScreenshot());` to take screenshot of the current page.
 
 ## Available traits
 
