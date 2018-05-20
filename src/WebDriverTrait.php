@@ -4,9 +4,8 @@ namespace weitzman\DrupalTestTraits;
 
 use DMore\ChromeDriver\ChromeDriver;
 
-trait WebDriverSetup
+trait WebDriverTrait
 {
-    use MinkSetup;
 
     /**
      * @return \Behat\Mink\Driver\DriverInterface

@@ -15,11 +15,11 @@ use weitzman\DrupalTestTraits\Entity\UserCreationTrait;
  * - Have your base class extend this class.
  * - Your tests may extend this class directly.
  */
-abstract class ExistingSiteTestCase extends TestCase
+abstract class ExistingSiteBase extends TestCase
 {
 
-    use DrupalSetup;
-    use MinkSetup;
+    use DrupalTrait;
+    use GoutteTrait;
     use NodeCreationTrait;
     use UserCreationTrait;
     use TaxonomyCreationTrait;

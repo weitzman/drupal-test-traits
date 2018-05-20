@@ -1,51 +1,24 @@
 <?php
 
-namespace weitzman\DrupalTestTraits\Tests;
+// Use your module's testing namespace such as the one below.
+namespace Drupal\Tests\moduleName\ExistingSiteJavascript;
 
 use Behat\Mink\WebAssert;
 use Drupal\node\Entity\Node;
 use Drupal\taxonomy\Entity\Vocabulary;
-use Drupal\Tests\RandomGeneratorTrait;
-use PHPUnit\Framework\TestCase;
-use weitzman\DrupalTestTraits\DrupalSetup;
-use weitzman\DrupalTestTraits\Entity\TaxonomyCreationTrait;
-use weitzman\DrupalTestTraits\WebDriverSetup;
+use weitzman\DrupalTestTraits\ExistingSiteJavascriptBase;
 
 /**
- * Test the node creation trait.
+ * A WebDriver test suitable for testing Ajax and client-side interactions.
  */
-class ExampleFunctionalTest extends TestCase
+class ExampleJavascriptTest extends ExistingSiteJavascriptBase
 {
-
-    use DrupalSetup;
-    use WebDriverSetup;
-    use TaxonomyCreationTrait;
-
-    // The entity creation traits need this.
-    use RandomGeneratorTrait;
-
-    public function setUp()
-    {
-        parent::setUp();
-        $this->setupDrupal();
-        $this->setupMinkSession();
-    }
-
-    /**
-     * @throws \Drupal\Core\Entity\EntityStorageException
-     */
-    public function tearDown()
-    {
-        parent::tearDown();
-        $this->tearDownDrupal();
-        $this->tearDownMinkSession();
-    }
-
     public function testContentCreation()
     {
         // Create a taxonomy term. Will be automatically cleaned up at the end of the test.
         $vocab = Vocabulary::load('tags');
-        $term = $this->createTerm($vocab, ['name' => 'Amsterdam']);
+        $this->createTerm($vocab, ['name' => 'Term 1']);
+        $this->createTerm($vocab, ['name' => 'Term 2']);
         $session = $this->getSession();
         $web_assert = new WebAssert($session);
         $this->visit('/user/login');
@@ -62,21 +35,21 @@ class ExampleFunctionalTest extends TestCase
         $page = $this->getCurrentPage();
         $page->fillField('title[0][value]', 'Article Title');
         $tags = $page->findField('field_tags[target_id]');
-        $tags->setValue('Ams');
-        $tags->keyDown('t');
-        /** @var \Behat\Mink\Element\NodeElement[] $results */
-        $results = $page->waitFor('1', function () use ($page) {
+        $tags->setValue('Ter');
+        $tags->keyDown('m');
+        /** @var \Behat\Mink\Element\NodeElement $result */
+        $result = $page->waitFor('1', function () use ($page) {
             $element = $page->find('css', '.ui-autocomplete li');
             if (!empty($element) && $element->isVisible()) {
                 return $element;
             }
             return null;
         });
-        $this->assertNotNull($results);
+        $this->assertNotNull($result);
         // Select the autocomplete option
-        $results->click();
+        $result->click();
         // Verify that correct the input is selected.
-        $web_assert->pageTextContains('Amsterdam');
+        $web_assert->pageTextContains('Term 1');
         $submit_button = $page->findButton('Save');
         $submit_button->press();
         // Verify the URL and get the nid.
@@ -85,6 +58,6 @@ class ExampleFunctionalTest extends TestCase
         $this->markEntityForCleanup($node);
         // Verify the text on the page.
         $web_assert->pageTextContains('Article Title');
-        $web_assert->pageTextContains('Amsterdam');
+        $web_assert->pageTextContains('Term 1');
     }
 }

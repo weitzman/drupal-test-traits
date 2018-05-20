@@ -7,7 +7,7 @@ use Drupal\Core\Entity\EntityInterface;
 use DrupalFinder\DrupalFinder;
 use Symfony\Component\HttpFoundation\Request;
 
-trait DrupalSetup
+trait DrupalTrait
 {
 
     /**

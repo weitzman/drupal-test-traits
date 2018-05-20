@@ -19,31 +19,33 @@ product quality and not conversations, this is a testing approach for you.
 
 ## Authoring tests
 
-See [ExampleTest.php](./tests/ExampleTest.php)
+Pick a test type:
+1. **ExistingSite**. See [ExampleTest.php](./tests/ExampleTest.php). These tests can be small unit tests up to larger Functional tests (via [Goutte](http://goutte.readthedocs.io/en/latest/)).
+2. **ExistingSiteJavascript**. See [ExampleJavascriptTest.php](./tests/ExampleJavascriptTest.php). These tests make use of a real Chrome browser, so are suited to testing Ajax and similar client side interactions. These tests run slower than ExistingSite.  
 
-In addition to a test like above, you must extend a base class. [ExistingSiteTestCase.php](src/ExistingSiteTestCase.php) 
-serves as a model that you can use directly, extend, or feel free to copy its code into your base class.
+In addition to a test like above, you must extend a base class - ([ExistingSiteTestBase.php](src/ExistingSiteBase.php) or [ExistingJavascriptBase.php](src/ExistingSiteJavascriptBase.php)  
+You may use these directly, extend them, or feel free to copy their minimal code into your own base classes.
   
 ## Running tests
 
-- You must specify the URL to your site as an environment variable: `DTT_BASE_URL=http://example.com` and `DTT_API_URL=http://localhost:9222`. Here are three ways to do that:
+- You must specify the URL to your site as an environment variable: `DTT_BASE_URL=http://example.com`. For ExistingSiteJavascript also specify `DTT_API_URL=http://localhost:9222`. Here are three ways to do that:
     - Specify in a phpunit.xml. [See example](docs/phpunit.xml).
     - Enter that line into a .env file. These files are supported by [drupal-project](https://github.com/drupal-composer/drupal-project/blob/8.x/.env.example) and [Docker](https://docs.docker.com/compose/env-file/). 
-    - Specify an environment variable at runtime: `DTT_BASE_URL=http://127.0.0.1:8888;DTT_API_URL=http://localhost:9222 vendor/bin/phpunit ...`
-- Add --bootstrap option like so: `--bootstrap=web/core/tests/bootstrap.php ` (points at Drupal core). Required when you use NodeCreationTrait. Alternatively, specify in a [phpunit.xml](docs/phpunit.xml).
+    - Specify environment variables at runtime: `DTT_BASE_URL=http://127.0.0.1:8888;DTT_API_URL=http://localhost:9222 vendor/bin/phpunit ...`
+- Add --bootstrap option like so: `--bootstrap=web/core/tests/bootstrap.php ` ([points into Drupal core](https://github.com/drupal/drupal/blob/8.6.x/core/tests/bootstrap.php))). Alternatively, specify in a [phpunit.xml](docs/phpunit.xml).
 - Depending on your setup, you may wish to run phpunit as the web server user `su -s /bin/bash www-data -c "vendor/bin/phpunit ..."`
 
 ## Available traits
 
-- **DrupalSetup** -- _Bootstrap Drupal (and more)._  
+- **DrupalTrait**  
   Bootstraps Drupal so that its API's are available. Also offers an entity cleanup
   API so databases are kept relatively free of testing content.
 
-- **MinkSetup** -- _Create a Mink session._  
-  Makes Mink available for browser control, and offers a few helper methods.
+- **GoutteTrait**  
+  Makes Goutte available for browser control, and offers a few helper methods.
 
-- **WebDriverSetup** -- _Create a Mink session for [ChromeDriver](https://gitlab.com/DMore/chrome-mink-driver/)._  
-  Mink driver for controlling chrome without the overhead of selenium. It is suitable for functional javascript testing.
+- **WebDriverTrait** --   
+  Make [ChromeDriver]([ChromeDriver](https://gitlab.com/DMore/chrome-mink-driver/)) available for browser control without the overhead of Selenium. Suitable for functional javascript testing.
 
 - **NodeCreationTrait**  
   Create nodes that are automatically deleted at end of test method.
@@ -59,11 +61,14 @@ serves as a model that you can use directly, extend, or feel free to copy its co
 Contributions to the this project are welcome! Please file issues and pull requests.
 All pull requests are automatically tested at [CircleCI](https://circleci.com/gh/weitzman/drupal-test-traits).
 
-See docker-compose.yml for a handy development environment identical to our CircleCI.  
+See docker-compose.yml for a handy development environment identical to our CircleCI.
+
+See the [#testing channel on Drupal Slack](https://drupal.slack.com/messages/C223PR743) for discussion about this project. 
 
 ## Colophon
 
 - **Author**: Created by [Moshe Weitzman](http://weitzman.github.io).
+- **Maintainers: Maintained by [Moshe Weitzman](http://weitzman.github.io), [Rob Bayliss](https://github.com/rbayliss), and the Community.
 - **License**: Licensed under the [MIT license][mit]
 
 [mit]: ./LICENSE.md
