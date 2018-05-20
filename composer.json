@@ -8,6 +8,12 @@
             "email": "weitzman@tejasa.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
     "require": {
         "php": ">=7.0.0",
         "behat/mink": "^1.7",
@@ -27,12 +33,6 @@
     "autoload": {
         "psr-4": { "weitzman\\DrupalTestTraits\\": "src" }
     },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://packages.drupal.org/8"
-        }
-    ],
     "extra": {
         "installer-paths": {
             "web/core": ["type:drupal-core"]

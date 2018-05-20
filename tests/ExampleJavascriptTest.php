@@ -1,13 +1,14 @@
 <?php
 
-namespace weitzman\DrupalTestTraits\Tests;
+// Use your module's testing namespace such as the one below.
+namespace Drupal\Tests\moduleName\ExistingSiteJavascript;
 
 use weitzman\DrupalTestTraits\ExistingSiteJavascriptBase;
 
 /**
  * A WebDriver test suitable for testing Ajax and client-side interactions.
  */
-class ExampleTestJavascript extends ExistingSiteJavascriptBase
+class ExampleJavascriptTest extends ExistingSiteJavascriptBase
 {
     public function testHomepage()
     {

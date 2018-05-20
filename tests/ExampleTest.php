@@ -1,7 +1,7 @@
 <?php
 
 // Use your module's testing namespace such as the one below.
-// namespace Drupal\Tests\mass_media\ExistingSite;
+namespace Drupal\Tests\moduleName\ExistingSite;
 
 use Drupal\taxonomy\Entity\Vocabulary;
 use weitzman\DrupalTestTraits\ExistingSiteBase;
