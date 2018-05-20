@@ -40,7 +40,7 @@ services:
   chrome:
     image: previousnext/chrome-headless:latest
     ports:
-      - "9222:9222"
+      - "${CHROMEDRIVER_PORT-9222}:9222"
 
 #data volumes https://docs.docker.com/storage/volumes/
 volumes:
