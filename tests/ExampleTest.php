@@ -1,17 +1,15 @@
 <?php
 
-# Use your module's testing namespace such as the one below.
-namespace Drupal\Tests\mass_media\ExistingSite;
+// Use your module's testing namespace such as the one below.
+// namespace Drupal\Tests\mass_media\ExistingSite;
 
 use Drupal\taxonomy\Entity\Vocabulary;
-use weitzman\DrupalTestTraits\ExistingSiteTestCase;
+use weitzman\DrupalTestTraits\ExistingSiteBase;
 
 /**
  * A model test case using traits from Drupal Test Traits.
- *
- * The code in ExistingSiteTestCaseeTestCase.php should be incorporated into your own test base class.
  */
-class ExampleTest extends ExistingSiteTestCase
+class ExampleTest extends ExistingSiteBase
 {
 
     /**

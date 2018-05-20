@@ -21,9 +21,9 @@ product quality and not conversations, this is a testing approach for you.
 
 Pick a test type:
 1. **ExistingSite**. See [ExampleTest.php](./tests/ExampleTest.php). These tests can be small unit tests up to larger Functional tests (via [Goutte](http://goutte.readthedocs.io/en/latest/)).
-2. **ExistingSiteJavascript**. See [ExampleJavascriptTest.php](./tests/ExampleJavascriptTest.php). These tests make use of a real Chrome browser, so are suited to testing Ajax and similar client side interactions. These tests are also slower than ExistingSite.  
+2. **ExistingSiteJavascript**. See [ExampleJavascriptTest.php](./tests/ExampleJavascriptTest.php). These tests make use of a real Chrome browser, so are suited to testing Ajax and similar client side interactions. These tests run slower than ExistingSite.  
 
-In addition to a test like above, you must extend a base class - ([ExistingSiteTestCase.php](src/ExistingSiteTestCase.php) or [ExistingJavascriptTestCase.php](src/ExistingSiteJavascriptTestCase.php)  
+In addition to a test like above, you must extend a base class - ([ExistingSiteTestBase.php](src/ExistingSiteBase.php) or [ExistingJavascriptBase.php](src/ExistingSiteJavascriptBase.php)  
 You may use these directly, extend them, or feel free to copy their minimal code into your own base classes.
   
 ## Running tests
@@ -37,15 +37,15 @@ You may use these directly, extend them, or feel free to copy their minimal code
 
 ## Available traits
 
-- **DrupalSetup**  
+- **DrupalTrait**  
   Bootstraps Drupal so that its API's are available. Also offers an entity cleanup
   API so databases are kept relatively free of testing content.
 
-- **GoutteSetup**  
+- **GoutteTrait**  
   Makes Goutte available for browser control, and offers a few helper methods.
 
-- **WebDriverSetup** -- _Create a Mink session for [ChromeDriver](https://gitlab.com/DMore/chrome-mink-driver/)._  
-  Mink driver for controlling Chrome without the overhead of Selenium. Suitable for functional javascript testing.
+- **WebDriverTrait** --   
+  Make [ChromeDriver]([ChromeDriver](https://gitlab.com/DMore/chrome-mink-driver/)) available for browser control without the overhead of Selenium. Suitable for functional javascript testing.
 
 - **NodeCreationTrait**  
   Create nodes that are automatically deleted at end of test method.
