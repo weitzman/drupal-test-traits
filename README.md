@@ -23,8 +23,10 @@ Pick a test type:
 1. **ExistingSite**. See [ExampleTest.php](./tests/ExampleTest.php). These tests can be small unit tests up to larger Functional tests (via [Goutte](http://goutte.readthedocs.io/en/latest/)).
 2. **ExistingSiteJavascript**. See [ExampleJavascriptTest.php](./tests/ExampleJavascriptTest.php). These tests make use of a real Chrome browser, so are suited to testing Ajax and similar client side interactions. These tests run slower than ExistingSite.  
 
-In addition to a test like above, you must extend a base class - ([ExistingSiteTestBase.php](src/ExistingSiteBase.php) or [ExistingJavascriptBase.php](src/ExistingSiteJavascriptBase.php)  
-You may use these directly, extend them, or feel free to copy their minimal code into your own base classes.
+In addition to a test like above, you must extend a base class. You can extend 
+[ExistingSiteTestBase.php](src/ExistingSiteBase.php) or [ExistingJavascriptBase.php](src/ExistingSiteJavascriptBase.php) 
+from your own base classes or directly from your tests.
+
   
 ## Running tests
 
@@ -34,7 +36,7 @@ You may use these directly, extend them, or feel free to copy their minimal code
     - Specify environment variables at runtime: `DTT_BASE_URL=http://127.0.0.1:8888;DTT_API_URL=http://localhost:9222 vendor/bin/phpunit ...`
 - Add --bootstrap option like so: `--bootstrap=web/core/tests/bootstrap.php ` ([points into Drupal core](https://github.com/drupal/drupal/blob/8.6.x/core/tests/bootstrap.php))). Alternatively, specify in a [phpunit.xml](docs/phpunit.xml).
 - Depending on your setup, you may wish to run phpunit as the web server user `su -s /bin/bash www-data -c "vendor/bin/phpunit ..."`
-- For quick debugging in javascript use `file_put_contents('public://screenshot.png', $this->getSession()->getScreenshot());` to take screenshot of the current page.
+- For quick debugging in ExistingSiteJavascript use `file_put_contents('public://screenshot.png', $this->getSession()->getScreenshot());` to take screenshot of the current page.
 
 ## Available traits
 
@@ -69,7 +71,7 @@ See the [#testing channel on Drupal Slack](https://drupal.slack.com/messages/C22
 ## Colophon
 
 - **Author**: Created by [Moshe Weitzman](http://weitzman.github.io).
-- **Maintainers: Maintained by [Moshe Weitzman](http://weitzman.github.io), [Rob Bayliss](https://github.com/rbayliss), and the Community.
+- **Maintainers**: Maintained by [Moshe Weitzman](http://weitzman.github.io), [Rob Bayliss](https://github.com/rbayliss), and the Community.
 - **License**: Licensed under the [MIT license][mit]
 
 [mit]: ./LICENSE.md
