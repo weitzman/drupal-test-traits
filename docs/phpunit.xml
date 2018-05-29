@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Copy code below into your own phpunit.xml file-->
-<phpunit bootstrap="web/core/tests/bootstrap.php">
+
+<!-- Using this project's bootstrap file allows tests in `ExistingSite` and `ExistingsSiteJavascript`
+     to run alongside core's 4 test types. -->
+<phpunit bootstrap="vendor/weitzman/drupal-test-traits/src/bootstrap.php">
     <env name="DTT_BASE_URL" value="http://example.com"/>
     <env name="DTT_API_URL" value="http://localhost:9222"/>
 

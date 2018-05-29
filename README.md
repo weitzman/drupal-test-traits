@@ -34,9 +34,21 @@ from your own base classes or directly from your tests.
     - Specify in a phpunit.xml. [See example](docs/phpunit.xml).
     - Enter that line into a .env file. These files are supported by [drupal-project](https://github.com/drupal-composer/drupal-project/blob/8.x/.env.example) and [Docker](https://docs.docker.com/compose/env-file/). 
     - Specify environment variables at runtime: `DTT_BASE_URL=http://127.0.0.1:8888;DTT_API_URL=http://localhost:9222 vendor/bin/phpunit ...`
-- Add --bootstrap option like so: `--bootstrap=web/core/tests/bootstrap.php ` ([points into Drupal core](https://github.com/drupal/drupal/blob/8.6.x/core/tests/bootstrap.php))). Alternatively, specify in a [phpunit.xml](docs/phpunit.xml).
+- Add --bootstrap option like so: `--bootstrap=vendor/weitzman/drupal-test-traits/src/bootstrap.php `
 - Depending on your setup, you may wish to run phpunit as the web server user `su -s /bin/bash www-data -c "vendor/bin/phpunit ..."`
 - For quick debugging in ExistingSiteJavascript use `file_put_contents('public://screenshot.png', $this->getSession()->getScreenshot());` to take screenshot of the current page.
+
+### Bootstrap options
+To allow use of `ExistingSite` and `ExistingSiteJavascript` autoloading to be work alongside core's (`Unit`, `Kernel`, etc),
+this project's [`bootstrap.php`](src/bootstrap.php) should be used:
+
+```bash
+vendor/bin/phpunit --bootstrap=vendor/weitzman/drupal-test-traits/src/bootstrap.php
+```
+Alternatively, specify this in a custom `phpunit.xml` file ([See example](docs/phpunit.xml)).
+
+If you have your own `bootstrap.php` file, refer to [this project's version](src/bootstrap.php), and add the
+`ExistingSite` and `ExistingSiteJavascript` namespaces logic to your own.
 
 ## Available traits
 
